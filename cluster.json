@@ -1,0 +1,28 @@
+{
+    "autoscale": {
+        "min_workers": 1,
+        "max_workers": 8
+    },
+    "cluster_name": "API Cluster",
+    "spark_version": "12.2.x-scala2.12",
+    "spark_conf": {},
+    "aws_attributes": {
+        "instance_profile_arn": "arn:aws:iam::999999999999:instance-profile/one-env-databricks-access"
+    },
+    "ssh_public_keys": [],
+    "custom_tags": {
+        "RemoveAfter": "20240131"
+    },
+    "spark_env_vars": {
+        "PYSPARK_PYTHON": "/databricks/python3/bin/python3"
+    },
+    "autotermination_minutes": 60,
+    "cluster_source": "UI",
+    "init_scripts": [],
+    "instance_pool_id": "0305-013945-pine157-pool-v1lmsbo2",
+    "enable_local_disk_encryption": false,
+    "driver_instance_pool_id": "0305-013945-pine157-pool-v1lmsbo2",
+    "data_security_mode": "USER_ISOLATION",
+    "runtime_engine": "PHOTON",
+    "cluster_id": "0601-182128-dcbte59m"
+}
