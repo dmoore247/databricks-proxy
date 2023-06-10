@@ -1,7 +1,8 @@
 # databricks-proxy
+With Informatca BDM and other older databricks compatible tools, those tools don't always keep up with API changes and enhancement. This cluster proxy will help take cluster API requests, modify them, then forward them to the `DATABRICKS_HOST` api endpoint.
 
-cluster_proxy.py uses Flask to create a simple localhost only cluster api endpoint.
-Use this proxy to modify requests being made to DATABRICKS_HOST api endpoint.
+cluster_proxy.py is a simple Flask app to create a simple localhost only cluster api proxy endpoint.
+Use this proxy to modify requests being made to `DATABRICKS_HOST` api endpoint.
 
 Documentation inside cluster_proxy.py
 
@@ -24,7 +25,7 @@ Then run:
 ```sh
 bash ./cluster-create.sh
 ```
-Should produce:
+Should produce something like:
 ```
 {"cluster_id":"9999-999999-w1srxxdm"}%
 ```
