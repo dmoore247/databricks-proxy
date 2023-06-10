@@ -15,11 +15,11 @@
   cluster.json contains the JSON configuration of a cluster from the application (e.g. Informatica BDM)
 
   Example Usage:
-    DATABRICKS_HOST="https://myorg-myworkspace.cloud.databricks.com" python cluster_proxy.py
+    export DATABRICKS_HOST="https://myorg-myworkspace.cloud.databricks.com" python cluster_proxy.py
 
 
   Returns:
-      _type_: response from the DATABRICKS_HOST
+      : response from the DATABRICKS_HOST
 """
 from flask import Flask, redirect, url_for, request
 from requests import get, post
@@ -58,8 +58,7 @@ dictConfig(
         "root": {"level": "DEBUG", "handlers": ["console"]},
     }
 )
-app = Flask('__main__')
-host = os.getenv("DATABRICKS_HOST")
+
 
 
 def munge_request(data:dict):
@@ -75,8 +74,6 @@ def munge_request(data:dict):
     now = datetime.datetime.now()
     data["custom_tags"]["create_datetime"] = str(now.strftime("%Y-%m-%d %H:%M:%S"))
     
-    
-
     # modify components to the request
     if data["autotermination_minutes"]:
         if int(data["autotermination_minutes"]> 10):
@@ -87,7 +84,11 @@ def munge_request(data:dict):
       del data["runtime_engine"]
     
     return data
-        
+  
+
+app = Flask('__main__')
+assert os.getenv("DATABRICKS_HOST", None) is not None
+host = os.getenv("DATABRICKS_HOST", None)
 
 @app.route('/', defaults={'path': ''},methods = ['POST', 'GET'])
 @app.route('/<path:path>',methods = ['POST', 'GET'])
@@ -127,4 +128,5 @@ def proxy(path):
   else:
     return f"Request type not supported"
 
+## -------------------------------------
 app.run(host='127.0.0.1', port=8080, debug=False)
