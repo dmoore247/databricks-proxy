@@ -29,3 +29,7 @@ Should produce something like:
 ```
 {"cluster_id":"9999-999999-w1srxxdm"}%
 ```
+
+## Production
+See these documents for advice on production deployment, including Elastic Beanstalk for AWS
+https://flask.palletsprojects.com/en/2.3.x/deploying/
